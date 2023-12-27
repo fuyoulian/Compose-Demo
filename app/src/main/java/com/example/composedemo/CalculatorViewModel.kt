@@ -56,10 +56,11 @@ class CalculatorViewModel: ViewModel() {
     }
 
     private fun performDelete() {
-        when {
+        state = when {
             state.rightNumber.isNotBlank() -> state.copy(rightNumber = state.rightNumber.dropLast(1))
             state.operator != null -> state.copy(operator = null)
             state.leftNumber.isNotBlank() -> state.copy(leftNumber = state.leftNumber.dropLast(1))
+            else -> return
         }
     }
 
